@@ -32,35 +32,31 @@
   }
 
   let favoriteBooks = [];
-  console.log('Favorite books:', favoriteBooks);
 
   function initActions(){
-    //let favoriteBooks = [];
-    //console.log('Favorite books:', favoriteBooks);
+
     const clickedElements = document.querySelectorAll(select.all.bookLink);
 
     for(let clickedElement of clickedElements){
       clickedElement.addEventListener('dblclick', function(event){
         event.preventDefault();
+        const attribute = clickedElement.getAttribute(select.all.bookId);
+
         if(!clickedElement.classList.contains(classNames.favorite)){
           clickedElement.classList.add(classNames.favorite);
-          const attribute = clickedElement.getAttribute(select.all.bookId);
-          console.log('Attribute:', attribute);
           favoriteBooks.push(attribute);
           console.log('Favorite books:', favoriteBooks);
         } else{
           clickedElement.classList.remove(classNames.favorite);
-          favoriteBooks.splice(select.all.bookId);
-          //console.log('Favorite books:', favoriteBooks);
+          const indexElem = favoriteBooks.indexOf(attribute);
+          favoriteBooks.splice(indexElem, 1);
+          console.log('Favorite books:', favoriteBooks);
         }
       });
     }
   }
 
-
   render();
   initActions();
-
-
 }
 
