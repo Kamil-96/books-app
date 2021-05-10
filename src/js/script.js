@@ -130,7 +130,6 @@
     }
 
     determineRatingBgc(rating) {
-      const thisBooksList = this;
 
       let background = '';
       if(rating < 6){
@@ -147,5 +146,6 @@
   }
 
   const app = new BooksList();
+  console.log('app:', app);
 }
 
